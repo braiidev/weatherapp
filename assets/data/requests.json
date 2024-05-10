@@ -1,16 +1,4 @@
 {
-    "bg": {
-        "api": "QQqiU5ulnfwyDM37KM0YYzYOl758gRPeaXQWOYGkrc15gdOzDqhRePih",
-        "url": "https://api.pexels.com/v1/search?",
-        "headers": {
-            "Authorization": "replace_api"
-        },
-        "search": {
-            "query": "nature",
-            "orientation": "landscape",
-            "per_page": "80"
-        }
-    },
     "weather": {
         "url": "http://dataservice.accuweather.com/currentconditions/v1/",
         "locationKey": "1-7788_15_AL",
