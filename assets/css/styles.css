@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    --image: url("https://images.pexels.com/photos/316398/pexels-photo-316398.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200");
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background-position: center;
+    background-size: cover;
+    background-image: var(--image);
+    background-color: #222;
+    background-repeat: no-repeat;
+    transition: background 2s ease;
+    position: relative;
+}
+
+body::before {
+    content: attr(data-name);
+    position: absolute;
+    width: fit-content;
+    height: fit-content;
+    bottom: 1em;
+    right: 1em;
+    color: #fefefe;
+    font-size: clamp(10px, 1vw, 1.1vw);
+    font-weight: bold;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Screen styling */
+.screen {
+    width: 80%;
+    min-height: fit-content;
+    padding: 4em 2em;
+    background-color: rgba(0, 0, 0, .7);
+    border-radius: 10px;
+    position: relative;
+    font-family: 'JetBrains Mono', monospace;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+    color: #efefef;
+    backdrop-filter: blur(5px);
+}
+
+.title {
+    width: fit-content;
+    height: fit-content;
+    position: absolute;
+    top: 0;
+    font-size: clamp(10px, 1vw, 1.1vw);
+    padding: 20px;
+    color: #7f7f7f;
+}
+
+.location {
+    text-align: center;
+    margin: 20px 0;
+    font-size: clamp(12px, 1.8vw, 2.2vw);
+}
+
+.day {
+    text-align: center;
+    margin: 10px 0;
+    font-size: clamp(12px, 2vw, 2.5vw);
+}
+
+/* Tab styling */
+.tab {
+    position: relative;
+    bottom: -10%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: auto;
+    flex-wrap: wrap;
+}
+
+.tab__time,
+.tab__weather {
+    min-width: 300px;
+    text-align: center;
+}
+
+/* Clock */
+.tab__time__item {
+    font-size: clamp(32px, 10vw, 10vw);
+}
+
+.tab__time__item__sup {
+    font-size: clamp(2.5px, 2vw, 2vw);
+}
+
+/* Weather */
+.tab__weather__image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+
+.tab__weather__temp {
+    font-size: clamp(12px, 2vw, 2.5vw);
+    text-align: center;
+}
+
+.tab__weather__details {
+    list-style: none;
+    font-size: clamp(12px, 1.5vw, 2vw);
+}
+
+.tab__weather__detail__item {
+    margin: .5em 0;
+    text-align: justify;
+}
+
+.tab__weather__detail__item:first-child {
+    font-size: clamp(12px, 1.5vw, 2vw);
+    text-align: center;
+}
+

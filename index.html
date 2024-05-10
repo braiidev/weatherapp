@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>My Weather</title>
+        <link href="assets/css/styles.css" rel="stylesheet">
+        <link href="assets/img/weather/01.png" rel="favicon">
+    </head>
+    <body>
+        <div class="screen">
+            <h1 class="title">My Weather</h1>
+            <h3 class="location" id="location">González Catán - Buenos Aires</h3>
+            <h3 class="day" id="currentDay">Loading...</h3>
+            <div class="tab">
+                <div class="tab__time" id="currentTime">
+                    <span class="tab__time__item" id="hours">00</span>
+                    <span class="tab__time__item" id="separator">:</span>
+                    <span class="tab__time__item" id="minutes">00</span>
+                    <span class="tab__time__item__sup" id="meridiem"></span>
+                </div>
+                <div class="tab__weather" id="currentWeather">
+                    <div class="tab__weather__image"><img id="currentImageWeather"src="assets/img/weather/01.png" alt="Soleado"></div>
+                    <div class="tab__weather__temp" id="currentTempWeather">0ºC</div>
+                    <ul class="tab__weather__details">
+                        <li class="tab__weather__detail__item" id="weatherResume">load/li>
+                        <li class="tab__weather__detail__item">Humedad: <span id="humidity">0%</span></li>
+                        <li class="tab__weather__detail__item">Vientos: <span id="wind">0 km/h</span></li>
+                        <li class="tab__weather__detail__item">Lluvias: <span id="rain">0 %</span></li>
+                    </ul>
+                </div>
+            </div>    
+        </div>
+    <script src="assets/js/datetime.js"></script>
+    <script src="assets/js/background.js"></script>
+    <script src="assets/js/weather.js" type="module"></script>
+    </body>
+</html>
