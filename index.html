@@ -3,11 +3,11 @@
   <head>
     <title>My Weather</title>
     <link href="assets/css/styles.css" rel="stylesheet" />
-    <link href="assets/img/weather/01.png" rel="favicon" />
+    <link href="assets/img/icon.png" rel="favicon" />
   </head>
   <body>
     <div class="screen">
-      <h1 class="title">My Weather</h1>
+      <h1 class="title">WeatherApp</h1>
       <h3 class="location" id="location">Loading...</h3>
       <h3 class="day" id="currentDay">Loading...</h3>
       <div class="tab">
@@ -21,21 +21,27 @@
           <div class="tab__weather__image">
             <img
               id="currentImageWeather"
-              src="assets/img/weather/01.png"
-              alt="Soleado"
+              src="assets/img/load.gif"
+              alt="loading"
             />
           </div>
-          <div class="tab__weather__temp" id="currentTempWeather">0ºC</div>
+          <div class="tab__weather__temp" id="currentTempWeather"></div>
           <ul class="tab__weather__details">
-            <li class="tab__weather__detail__item" id="weatherResume">load</li>
-            <li class="tab__weather__detail__item">
-              Humedad: <span id="humidity">0%</span>
+            <li class="tab__weather__detail__item" id="weatherResume">
+              Loading...
             </li>
             <li class="tab__weather__detail__item">
-              Vientos: <span id="wind">0 km/h</span>
+              <img src="assets/img/humedad.png" alt="Humedad" />
+              <span id="humidity"></span>
             </li>
             <li class="tab__weather__detail__item">
-              Lluvias: <span id="rain">0 %</span>
+              <img src="assets/img/viento.png" alt="Vientos" />
+              <span id="wind"></span>
+            </li>
+            <li class="tab__weather__detail__item">
+              <img src="assets/img/lluvia.png" alt="Lluvias" /><span
+                id="rain"
+              ></span>
             </li>
           </ul>
         </div>
