@@ -10,7 +10,7 @@ const $wind = document.getElementById("wind");
 const $rain = document.getElementById("rain");
 
 const { weather, geoposition } = await request({
-  url: "/assets/data/weather.json",
+  url: "assets/data/weather.json",
 });
 
 // geoposition.search.apikey = "jHKrQvqpHKFdmMdP12FLXZdR4KgUIJa4";
@@ -39,3 +39,7 @@ async function Update() {
 
 Update();
 setInterval(Update, 600000);
+
+/*
+Create validateFunc(object) to add apikey
+*/
