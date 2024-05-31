@@ -25,7 +25,7 @@ La aplicación necesita permisos de geolocalización para proporcionar informaci
 
 **Visitar la web:**
 
-### [<sub><picture><img width="50" src="https://cdn-icons-png.flaticon.com/128/3845/3845731.png"/></picture></sub>WeatherApp<sub><picture><img width="50" src="https://cdn-icons-png.flaticon.com/128/3845/3845731.png"/></picture></sub>](https://braiidev.github.com/weatherapp)
+### [<sub><picture><img width="50" src="https://cdn-icons-png.flaticon.com/128/3845/3845731.png"/></picture></sub>WeatherApp<sub><picture><img width="50" src="https://cdn-icons-png.flaticon.com/128/3845/3845731.png"/></picture></sub>](https://braiidev.github.io/weatherapp/)
 
 ---
 
