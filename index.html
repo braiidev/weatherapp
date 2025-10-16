@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preload" as="image">
     <link rel="stylesheet" href="assets/css/index.css">
     <link rel="shortcut icon" href="assets/img/icon.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,7 +15,10 @@
 
 <body>
     <div class="board">
-        <div id="background" class="fullscreen item1"></div>
+        <div id="background" class="fullscreen item1">
+            <div id="tapeA" class="show"></div>
+            <div id="tapeB"></div>
+        </div>
         <div class="item2">
             <div class="item2-1" id="time"></div>
             <div class="item2-2">

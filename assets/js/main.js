@@ -1,5 +1,6 @@
 import Clock from "./clock.js";
 import Weather from "./weather.js";
+import changeBackground from "./background.js";
 
 const $ = (x) => document.querySelector(x);
 
@@ -18,4 +19,5 @@ const weather = new Weather($weather, $icon);
 weather.init();
 
 // Background
-// const backgrounds = 
+const background = new changeBackground($background);
+background.start(); 
