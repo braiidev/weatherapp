@@ -51,7 +51,7 @@
   width: -webkit-fill-available;
   z-index: 10;
   text-align: right;
-  background: linear-gradient(#00000000, #000000aa 30%);
+  /*background: linear-gradient(#00000000, #000000aa 30%);*/
   opacity: 1;
   animation-delay: 1s;
   animation-duration: 2s;
