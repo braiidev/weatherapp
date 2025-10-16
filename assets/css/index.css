@@ -6,10 +6,15 @@
   box-sizing: content-box;
 }
 
+:root {
+  --bg-color: #101025;
+  --font-size: 200px;
+}
+
 .board {
   width: 100vw;
   height: 100vh;
-  font-size: 24px;
+  font-size: var(--font-size);
   position: relative;
   z-index: 0;
   font-family: sans-serif;
@@ -21,7 +26,7 @@
 .fullscreen {
   transition: background 2s;
   object-fit: cover;
-  background-color: #101025;
+  background-color: var(--bg-color);
   background-size: cover;
   background-repeat: no-repeat;
   background-image: url("https://cdn.pixabay.com/photo/2022/10/07/11/02/autumn-7504819_1280.jpg");
@@ -35,7 +40,7 @@
 .item2 {
   position: absolute;
   bottom: 0;
-  padding: 1rem 2rem;
+  padding: 2vh 2vw;
   width: -webkit-fill-available;
   z-index: 10;
   text-align: right;
@@ -48,15 +53,15 @@
 }
 
 .item2-1 {
-  font-size: 5rem;
+  font-size: 1em;
 }
 .item2-2 {
-  font-size: 1.5rem;
+  font-size: 0.5em;
 }
 .item2-2-2 {
   display: inline-block;
-  width: 2rem;
-  height: 2rem;
+  width: 1em;
+  height: 1em;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
