@@ -24,8 +24,6 @@ class changeBackground {
         return imageURL
     }
     setImage(index) {
-        console.log(this.switching)
-        console.log(index)
         if (!this.running) return
         if (this.switching === 'init') {
             this.switching = 'A'
