@@ -1,61 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>WeatherApp - Braiidev</title>
-    <link href="assets/css/styles.css" rel="stylesheet" />
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/index.css">
     <link rel="shortcut icon" href="assets/img/icon.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="WeatherApp, simple, hermoso y eficaz." />
-    <meta
-      name="keywords"
-      content="WeatherApp,Braiidev,clima,reloj,tiempo,geolocalizacion"
-    />
-  </head>
-  <body>
-    <div class="screen">
-      <h1 class="title">WeatherApp</h1>
-      <h3 class="location" id="location">Loading...</h3>
-      <h3 class="day" id="currentDay">Loading...</h3>
-      <div class="tab">
-        <div class="tab__time" id="currentTime">
-          <span class="tab__time__item" id="hours">00</span>
-          <span class="tab__time__item" id="separator">:</span>
-          <span class="tab__time__item" id="minutes">00</span>
-          <span class="tab__time__item__sup" id="meridiem"></span>
+    <meta name="description" content="Screensaver like Chromecast plus sheik." />
+    <meta name="keywords" content="WeatherApp,Braiidev,clima,reloj,tiempo,geolocalizacion,screensaver" />
+    <title>WeatherApp - Braiidev</title>
+</head>
+
+<body>
+    <div class="board">
+        <div id="background" class="fullscreen item1"></div>
+        <div class="item2">
+            <div class="item2-1" id="time"></div>
+            <div class="item2-2">
+                <span class="item2-2-1" id="weather"></span>
+                <span class="item2-2-2" id="icon"></span>
+            </div>
         </div>
-        <div class="tab__weather" id="currentWeather">
-          <div class="tab__weather__image">
-            <img
-              id="currentImageWeather"
-              src="assets/img/load.gif"
-              alt="loading"
-            />
-          </div>
-          <div class="tab__weather__temp" id="currentTempWeather"></div>
-          <ul class="tab__weather__details">
-            <li class="tab__weather__detail__item" id="weatherResume">
-              Loading...
-            </li>
-            <li class="tab__weather__detail__item">
-              <img src="assets/img/humedad.png" alt="Humedad" />
-              <span id="humidity"></span>
-            </li>
-            <li class="tab__weather__detail__item">
-              <img src="assets/img/viento.png" alt="Vientos" />
-              <span id="wind"></span>
-            </li>
-            <li class="tab__weather__detail__item">
-              <img src="assets/img/lluvia.png" alt="Lluvias" /><span
-                id="rain"
-              ></span>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
-    <script src="assets/js/datetime.js"></script>
-    <script type="module" src="assets/js/background.js"></script>
-    <script type="module" src="assets/js/weather.js" type="module"></script>
-  </body>
+    <script type="module" src="assets/js/main.js" defer></script>
+</body>
+
 </html>

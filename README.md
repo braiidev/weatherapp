@@ -4,9 +4,6 @@
 
 Esta aplicación web muestra información meteorológica precisa y la hora actual de tu dispositivo, mientras ofrece hermosos fondos de pantalla que cambian cada minuto, ideal para usar como fondo de pantalla en reposo. 
 
-**Aclaración:**
-
-La aplicación necesita permisos de geolocalización para proporcionar información meteorológica específica de tu ubicación.
 
 ## Características
 
@@ -18,7 +15,7 @@ La aplicación necesita permisos de geolocalización para proporcionar informaci
 ## Requisitos
 
 - Navegador web moderno con soporte para JavaScript.
-- Permisos de geolocalización habilitados.
+- Permisos de geolocalización habilitados (ya no hace falta).
 - Conexión a Internet.
 
 ## Uso
@@ -31,9 +28,11 @@ La aplicación necesita permisos de geolocalización para proporcionar informaci
 
 ### Herramientas utilizadas
 
-- Flaticon
-- Accuweather
+- Open-meteo.com
+- IconExpress
 - Pixabay
+- IP-API
+
 ---
 
 <picture><img src="https://raw.githubusercontent.com/braiidev/braiidev/main/files/banner-short.jpg" /></picture>
