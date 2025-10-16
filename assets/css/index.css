@@ -8,7 +8,7 @@
 
 :root {
   --bg-color: #101025;
-  --font-size: 200px;
+  --font-size: clamp(24px, 14vw, 240px);
 }
 
 .board {
