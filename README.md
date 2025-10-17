@@ -31,7 +31,7 @@ Esta aplicación web muestra información meteorológica precisa y la hora actua
 - Open-meteo.com
 - IconExpress
 - Pixabay
-- IP-API
+- FREEIP-API
 
 ---
 
