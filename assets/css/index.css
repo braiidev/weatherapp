@@ -46,17 +46,22 @@
 
 .item2 {
   position: absolute;
-  bottom: 0;
-  padding: 2vh 2vw;
-  width: -webkit-fill-available;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 10;
   text-align: right;
-  /*background: linear-gradient(#00000000, #000000aa 30%);*/
+  background: linear-gradient(150deg, #00000000 55%, #000000);
   opacity: 1;
   animation-delay: 1s;
   animation-duration: 2s;
   animation-name: fadeItem;
   animation-fill-mode: backwards;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 .item2-1 {
@@ -74,6 +79,11 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.item2-3 {
+  font-size: 0.1em;
+  opacity: 0.7;
 }
 
 @keyframes fadeItem {

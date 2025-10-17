@@ -1,9 +1,10 @@
 import setIcon from "../img/weather/wno.js";
 
 class Weather {
-    constructor(weatherContainer, iconContainer, refreshInterval = 30) {
+    constructor(weatherContainer, iconContainer, locationContainer, refreshInterval = 30) {
         this.$weather = weatherContainer;
         this.$icon = iconContainer;
+        this.$location = locationContainer ?? null;
         this.refreshInterval = refreshInterval; //minutos
         this.lat = 0;
         this.lon = 0;
@@ -12,23 +13,23 @@ class Weather {
         this.regionName = "";
         this.ready = false;
     }
-    requestGeolocation() {
-        window.getGeolocation = (data) => {
-            if (data.status !== "success") {
-                console.error("No se pudo obtener la geolocalización");
-                return;
-            }
-            const { lat, lon, city, country, regionName } = data;
-            this.lat = lat;
-            this.lon = lon;
-            this.city = city;
-            this.country = country;
+    async requestGeolocation(){
+        fetch("https://free.freeipapi.com/api/json").then((response) => response.json()).then((data) => {
+            const { latitude, longitude, cityName, countryName, regionName } = data;
+            this.lat = latitude;
+            this.lon = longitude;
+            this.city = cityName;
+            this.country = countryName;
             this.regionName = regionName;
-            this.ready = true;
-        }
+            this.ready = true;   
+            this.fetchWeather(this.lat, this.lon);    
+            if(this.$location) this.$location.textContent = `${this.city}, ${this.country}`;     
+        });
     }
+
     fetchWeather(lat, lon) {
         const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,is_day&timezone=auto&forecast_days=1`
+        
         fetch(url).then((response) => response.json()).then((data) => {
             const { temperature_2m, weather_code, is_day } = data.current;
             this.$weather.textContent = `${temperature_2m}˚`;
@@ -47,12 +48,7 @@ class Weather {
     }
     init() {
         this.requestGeolocation();
-        const requestGeolocacion = document.createElement("script");
-        requestGeolocacion.src = "http://ip-api.com/json/?callback=getGeolocation";
-        document.body.appendChild(requestGeolocacion);
-        this.fetchWeather(this.lat, this.lon);
         this.update();
-
     }
 }
 

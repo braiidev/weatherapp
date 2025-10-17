@@ -7,6 +7,7 @@ const $ = (x) => document.querySelector(x);
 const $time = $("#time");
 const $weather = $("#weather");
 const $icon = $("#icon");
+const $location = $("#location");
 const $background = $("#background");
 
 //Clock
@@ -15,7 +16,7 @@ clock.start();
 
 
 //Weather
-const weather = new Weather($weather, $icon);
+const weather = new Weather($weather, $icon, $location);
 weather.init();
 
 // Background
