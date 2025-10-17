@@ -7,6 +7,11 @@ const Temporizer = (e) => {
     }, 1000)
 }
 
+function getHighResImage(url) {
+  if (typeof url !== "string") return null;
+  return url.replace("_150.jpg", "_1280.jpg");
+}
+
 class changeBackground {
     constructor(element, time = 1) {
         this.element = element;
@@ -21,7 +26,7 @@ class changeBackground {
     }
     getImage(index) {
         const { id, imageURL, views, likes } = images[index]
-        return imageURL
+        return getHighResImage(imageURL);
     }
     setImage(index) {
         if (!this.running) return
