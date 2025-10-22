@@ -8,8 +8,9 @@ const Temporizer = (e) => {
 }
 
 function getHighResImage(url) {
-  if (typeof url !== "string") return null;
-  return url.replace("_150.jpg", "_1280.jpg");
+    if (typeof url !== "string") return null;
+    return url.replace(/_\d+\.(jpg|png|jpeg|webp)$/, "_1280.$1");
+    //   return url.replace("_150.jpg", "_1280.jpg");
 }
 
 class changeBackground {
