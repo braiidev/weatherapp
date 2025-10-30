@@ -1,7 +1,7 @@
 import setIcon from "../img/weather/wno.js";
 
 class Weather {
-    constructor(weatherContainer, iconContainer, locationContainer, refreshInterval = 30) {
+    constructor(weatherContainer, iconContainer, locationContainer, refreshInterval = 10) {
         this.$weather = weatherContainer;
         this.$icon = iconContainer;
         this.$location = locationContainer ?? null;
@@ -40,7 +40,6 @@ class Weather {
     update() {
         const interval = setInterval(() => {
             if (this.ready) {
-                clearInterval(interval);
                 this.fetchWeather(this.lat, this.lon);
             }
             else clearInterval(interval);
