@@ -576,14 +576,6 @@ export const images = [
     "height": 3100
   },
   {
-    "id": 358771,
-    "imageURL": "https://cdn.pixabay.com/photo/2014/05/31/08/47/girl-358771_150.jpg",
-    "views": 119767,
-    "likes": 257,
-    "width": 2172,
-    "height": 1448
-  },
-  {
     "id": 8392883,
     "imageURL": "https://cdn.pixabay.com/photo/2023/11/16/18/46/mushroom-8392883_150.jpg",
     "views": 15359,
@@ -864,14 +856,6 @@ export const images = [
     "height": 3097
   },
   {
-    "id": 8861154,
-    "imageURL": "https://cdn.pixabay.com/photo/2024/06/29/10/13/girl-8861154_150.png",
-    "views": 13939,
-    "likes": 84,
-    "width": 6000,
-    "height": 3375
-  },
-  {
     "id": 4923333,
     "imageURL": "https://cdn.pixabay.com/photo/2020/03/11/21/06/seal-4923333_150.jpg",
     "views": 67080,
@@ -918,14 +902,6 @@ export const images = [
     "likes": 391,
     "width": 5472,
     "height": 3648
-  },
-  {
-    "id": 1461619,
-    "imageURL": "https://cdn.pixabay.com/photo/2016/06/16/16/16/woman-1461619_150.jpg",
-    "views": 96921,
-    "likes": 366,
-    "width": 4272,
-    "height": 2848
   },
   {
     "id": 9183463,
@@ -1302,14 +1278,6 @@ export const images = [
     "likes": 47,
     "width": 5446,
     "height": 3630
-  },
-  {
-    "id": 5631257,
-    "imageURL": "https://cdn.pixabay.com/photo/2020/10/06/05/31/woman-5631257_150.jpg",
-    "views": 54468,
-    "likes": 175,
-    "width": 3800,
-    "height": 2500
   },
   {
     "id": 8381451,

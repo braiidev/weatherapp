@@ -21,7 +21,7 @@ class changeBackground {
         this.switching = 'init'
         this.time = time;
         this.running = false;
-        this.maxIndex = 199;
+        this.maxIndex = 195;
         this.minIndex = 0;
         this.index = () => (Math.floor(Math.random() * (this.maxIndex - this.minIndex + 1)) + this.minIndex);
     }
