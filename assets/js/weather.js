@@ -2,6 +2,7 @@ import setIcon from "../img/weather/wno.js";
 
 function loading($element) {
     $element.style.letterSpacing = "1rem";
+    $element.textContent = "";
     const interval = setInterval(() => {
         let dots = $element.textContent;
         if (dots.length == 3) dots = "";
@@ -9,7 +10,7 @@ function loading($element) {
         $element.textContent = dots;
     }, 250);
     function destroy() {
-        $element.style.letterSpacing = "0";
+        $element.style.letterSpacing = "normal";
         clearInterval(interval);
     }
     return destroy;
@@ -26,7 +27,7 @@ class Weather {
         this.country = "";
         this.city = "";
         this.regionName = "";
-        this.status = "unload";
+        this.status = { geo: "unload", weather: "unload" };
         this.statusMessage = "App is unload";
         this.intervalId = null;
     }
@@ -54,7 +55,7 @@ class Weather {
             if (location != this.$location.textContent)
                 this.$location.textContent = location;
 
-            this.status = "success";
+            this.status.geo = "loaded";
             this.statusMessage = null;
 
         } catch (e) {
@@ -62,7 +63,7 @@ class Weather {
             this.$location.textContent = "No se pudo cargar localización";
             this.$location.classList.add("warning");
 
-            this.status = "error";
+            this.status.geo = "error";
             this.statusMessage = "Could not obtain IP information";
             console.error(this.statusMessage);
         }
@@ -73,21 +74,20 @@ class Weather {
         const destroy = loading(this.$weather)
 
         try {
-            const resp = await fetch(url, { method: "POST", headers: { "Access-Control-Allow-Origin": "*" } });
+            const resp = await fetch(url);
             if (!resp.ok) throw new Error("HTTP Error");
 
             if (this.$weather.classList.contains("warning")) this.$weather.classList.remove("warning");
 
             const data = await resp.json();
-            data = loadjsonp(url, this.showWeather)
             const { temperature_2m, weather_code, is_day } = data.current;
 
             destroy()
             this.$weather.textContent = `${temperature_2m}˚`;
-            this.$icon.innerHTML = "";
+            // this.$icon.innerHTML = "";
             this.$icon.style.backgroundImage = setIcon(weather_code, is_day);
 
-            this.status = "success";
+            this.status.weather = "loaded";
             this.statusMessage = null;
 
         } catch (e) {
@@ -95,32 +95,37 @@ class Weather {
             this.$weather.textContent = "Not available, trying again in 10 minutes";
             this.$weather.classList.add("warning");
 
-            this.status = "error";
+            this.status.weather = "error";
             this.statusMessage = "Could not obtain weather information";
 
             console.error(this.statusMessage);
         }
     }
 
-    update() {
+    async update() {
+        if (this.status.geo !== "loaded") return;
         if (this.intervalId) return;
 
-        this.intervalId = setInterval(() => {
-            if (this.status === "success") {
-                this.fetchWeather(this.lat, this.lon);
+        const run = async () => {
+            await this.fetchWeather(this.lat, this.lon);
+
+            if (this.status.weather !== "loaded") {
+                setTimeout(run, this.refreshInterval * 60 * 1000);
+                return;
             }
-            else {
-                this.status = "unload";
-                clearInterval(this.intervalId);
-            };
-        }, this.refreshInterval * 1000 * 60);
+        };
+
+        await run();
+
+        this.intervalId = setInterval(run, this.refreshInterval * 60 * 1000);
+
     }
 
     async init() {
         await this.requestGeolocation();
-        if (this.status === "success") {
-            await this.fetchWeather(this.lat, this.lon);
-            this.update();
+        if (this.status.geo === "loaded") {
+            // await this.fetchWeather(this.lat, this.lon);
+            await this.update();
         }
         else
             console.error(this.statusMessage);

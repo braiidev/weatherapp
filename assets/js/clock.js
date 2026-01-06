@@ -1,5 +1,5 @@
-const DAYS = { "0": "Domingo", "1": "Lunes", "2": "Martes", "3": "Miercoles", "4": "Jueves", "5": "Viernes", "6": "Sábado" }
-
+const DAYS = ["Domingo", "Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado"];
+const MONTH = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
 class Clock {
     constructor(clockContainer, dayContainer) {
         this.clock = clockContainer;
@@ -16,7 +16,8 @@ class Clock {
             const push = `${hours}:${minutes}`
             if (push != this.clock.textContent) this.clock.textContent = push;
 
-            const _dayName_ = DAYS[_time_.getDay()]
+            const day = _time_.getDate()
+            const _dayName_ = `${DAYS[_time_.getDay()]} ${day} de ${MONTH[_time_.getMonth()]}`;
             if (_dayName_ != this.day.textContent)
                 this.day.textContent = _dayName_;
         }, 100);
