@@ -1,53 +1,129 @@
 import setIcon from "../img/weather/wno.js";
 
+
+function loading($element) {
+    $element.style.letterSpacing = "1rem";
+    const interval = setInterval(() => {
+        let dots = $element.textContent;
+        if (dots.length == 3) dots = "";
+        else dots += ".";
+        $element.textContent = dots;
+    }, 250);
+    function destroy() {
+        $element.style.letterSpacing = "0";
+        clearInterval(interval);
+    }
+    return destroy;
+}
+
 class Weather {
     constructor(weatherContainer, iconContainer, locationContainer, refreshInterval = 10) {
         this.$weather = weatherContainer;
         this.$icon = iconContainer;
-        this.$location = locationContainer ?? null;
+        this.$location = locationContainer;
         this.refreshInterval = refreshInterval; //minutos
         this.lat = 0;
         this.lon = 0;
         this.country = "";
         this.city = "";
         this.regionName = "";
-        this.ready = false;
+        this.status = "unload";
+        this.statusMessage = "App is unload";
+        this.intervalId = null;
     }
-    async requestGeolocation(){
-        fetch("https://free.freeipapi.com/api/json").then((response) => response.json()).then((data) => {
+
+    async requestGeolocation() {
+        const destroy = loading(this.$location)
+        try {
+            const resp = await fetch("https://free.freeipapi.com/api/json");
+            if (!resp.ok) throw new Error("HTTP Error");
+            if (this.$location.classList.contains("warning")) this.$location.classList.remove("warning");
+
+            const data = await resp.json();
+
             const { latitude, longitude, cityName, countryName, regionName } = data;
             this.lat = latitude;
             this.lon = longitude;
             this.city = cityName;
             this.country = countryName;
             this.regionName = regionName;
-            this.ready = true;   
-            this.fetchWeather(this.lat, this.lon);    
-            if(this.$location) this.$location.textContent = `${this.city}, ${this.country}`;     
-        });
+
+            const location = `${this.city}, ${this.country}`;
+
+            destroy()
+            if (location != this.$location.textContent)
+                this.$location.textContent = location;
+
+            this.status = "success";
+            this.statusMessage = null;
+
+        } catch (e) {
+            destroy()
+            this.$location.textContent = "No se pudo cargar localización";
+            this.$location.classList.add("warning");
+
+            this.status = "error";
+            this.statusMessage = "Could not obtain IP information";
+            console.error(this.statusMessage);
+        }
     }
 
-    fetchWeather(lat, lon) {
+    async fetchWeather(lat = this.lat, lon = this.lon) {
         const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,is_day&timezone=auto&forecast_days=1`
-        
-        fetch(url).then((response) => response.json()).then((data) => {
+        const destroy = loading(this.$weather)
+
+        try {
+            const resp = await fetch(url);
+            console.log(resp)
+            if (!resp.ok) throw new Error("HTTP Error");
+
+            if (this.$weather.classList.contains("warning")) this.$weather.classList.remove("warning");
+
+            const data = await resp.json();
             const { temperature_2m, weather_code, is_day } = data.current;
+
+            destroy()
             this.$weather.textContent = `${temperature_2m}˚`;
             this.$icon.innerHTML = "";
             this.$icon.style.backgroundImage = setIcon(weather_code, is_day);
-        });
+
+            this.status = "success";
+            this.statusMessage = null;
+
+        } catch (e) {
+            destroy();
+            this.$weather.textContent = "-";
+            this.$weather.classList.add("warning");
+
+            this.status = "error";
+            this.statusMessage = "Could not obtain weather information";
+
+            console.error(this.statusMessage);
+        }
     }
+
     update() {
-        const interval = setInterval(() => {
-            if (this.ready) {
+        if (this.intervalId) return;
+
+        this.intervalId = setInterval(() => {
+            if (this.status === "success") {
                 this.fetchWeather(this.lat, this.lon);
             }
-            else clearInterval(interval);
+            else {
+                this.status = "unload";
+                clearInterval(this.intervalId);
+            };
         }, this.refreshInterval * 1000 * 60);
     }
-    init() {
-        this.requestGeolocation();
-        this.update();
+
+    async init() {
+        await this.requestGeolocation();
+        if (this.status === "success") {
+            await this.fetchWeather(this.lat, this.lon);
+            this.update();
+        }
+        else
+            console.error(this.statusMessage);
     }
 }
 

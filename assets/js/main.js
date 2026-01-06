@@ -5,13 +5,14 @@ import changeBackground from "./background.js";
 const $ = (x) => document.querySelector(x);
 
 const $time = $("#time");
+const $day = $("#day");
 const $weather = $("#weather");
 const $icon = $("#icon");
 const $location = $("#location");
 const $background = $("#background");
 
 //Clock
-const clock = new Clock($time);
+const clock = new Clock($time, $day);
 clock.start();
 
 

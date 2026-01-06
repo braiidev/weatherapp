@@ -64,6 +64,10 @@
   align-items: flex-end;
 }
 
+.item2-0 {
+  font-size: 0.3em;
+  padding-right: 0.3em;
+}
 .item2-1 {
   font-size: 1em;
 }
@@ -108,4 +112,8 @@
   to {
     filter: opacity(100%) blur(0);
   }
+}
+
+.warning{
+  color: rgb(250, 154, 28)
 }
