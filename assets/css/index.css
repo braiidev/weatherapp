@@ -4,6 +4,7 @@
   padding: 0;
   margin: 0;
   box-sizing: content-box;
+  user-select: none;
 }
 
 :root {
@@ -115,5 +116,6 @@
 }
 
 .warning{
-  color: rgb(250, 154, 28)
+  color: rgb(250, 154, 28);
+  font-size: 1rem;
 }

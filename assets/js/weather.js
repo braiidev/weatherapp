@@ -1,6 +1,5 @@
 import setIcon from "../img/weather/wno.js";
 
-
 function loading($element) {
     $element.style.letterSpacing = "1rem";
     const interval = setInterval(() => {
@@ -34,6 +33,7 @@ class Weather {
 
     async requestGeolocation() {
         const destroy = loading(this.$location)
+
         try {
             const resp = await fetch("https://free.freeipapi.com/api/json");
             if (!resp.ok) throw new Error("HTTP Error");
@@ -73,13 +73,13 @@ class Weather {
         const destroy = loading(this.$weather)
 
         try {
-            const resp = await fetch(url);
-            console.log(resp)
+            const resp = await fetch(url, { method: "POST", headers: { "Access-Control-Allow-Origin": "*" } });
             if (!resp.ok) throw new Error("HTTP Error");
 
             if (this.$weather.classList.contains("warning")) this.$weather.classList.remove("warning");
 
             const data = await resp.json();
+            data = loadjsonp(url, this.showWeather)
             const { temperature_2m, weather_code, is_day } = data.current;
 
             destroy()
@@ -92,7 +92,7 @@ class Weather {
 
         } catch (e) {
             destroy();
-            this.$weather.textContent = "-";
+            this.$weather.textContent = "Not available, trying again in 10 minutes";
             this.$weather.classList.add("warning");
 
             this.status = "error";
